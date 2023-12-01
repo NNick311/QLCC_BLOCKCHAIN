@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+	<title>Hệ Thống Quản Lý Chứng Chỉ</title>
+
+	<!-- Loading third party fonts -->
+	<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+	<link href="/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- Loading main css file -->
+	<link rel="stylesheet" href="/style.css">
+	<link rel="stylesheet" href="/custom.css">
+
+</head>
+
+<body ng-app="appCertificate" ng-controller="ctrlCertificate" ng-init="init()">
+	<div class="site-content">
+		<header class="hero" data-bg-image="/images/background.jpg">
+			<div class="container">
+				<div class="hero-content">
+					<h1 style="color:black">Hệ Thống Quản Lý Chứng Chỉ
+						<br>
+						<strong>Bằng TốT Nghiệp Đại Học</strong>
+					</h1>
+				</div>
+
+				<form class="subscribe-form form-inline">
+					<select style="color:black; background-color: white;position: absolute; top: 5px;bottom: 5px;border: 0px;
+					outline: 0px;" ng-model="type">
+						<option value="0">Thông tin bằng</option>
+						<option value="1">Lịch sử cập nhật</option>
+					</select>
+					<input type="text" placeholder="Nhập mã số  bằng..." ng-model="certificateCode" style="color: black;padding-left: 147px">
+					<input type="submit" value="Tìm kiếm" ng-click="getCertificateByCode()">
+				</form>
+			</div>
+		</header>
+
+		<main class="main-content">
+			<div class="fullwidth-block">
+				<div class="container">
+					<h2 class="section-title">Liên Hệ Với Quản Trị Viên</h2>
+					<smal class="section-subtitle">Danh sách các quản trị viên hỗ trợ hệ thống</smal>
+
+					<div class="row">
+						<div class="col-sm-6" ng-repeat="dataList in supportList">
+							<div class="testimonial" ng-repeat="item in dataList">
+								<img src="{{item.img}}" alt="" class="user-avatar">
+								<div class="testimonial-content">
+									<span class="meta">
+										<strong>{{item.name}}</strong>,
+										<em>{{item.positionDsc}}
+											<a href="#">{{item.company}}.</a>
+										</em>
+									</span>
+									<p>Email: {{item.email}}. </br>
+										Phone: {{item.phone}}
+									</p>
+									<p>{{item.dsc}}.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</main>
+
+		<footer class="site-footer" data-bg-color="#e6e6e6">
+			<div class="container">
+				<p>Bản quyền 2018 bởi Nguyễn Văn Hải, Đại Học Bách Khoa Hà Nội</p>
+
+				<div class="social-links">
+					<a href="#" class="facebook">
+						<i class="fa fa-facebook"></i>
+					</a>
+					<a href="#" class="twitter">
+						<i class="fa fa-twitter"></i>
+					</a>
+					<a href="#" class="google-plus">
+						<i class="fa fa-google-plus"></i>
+					</a>
+					<a href="#" class="pinterest">
+						<i class="fa fa-pinterest"></i>
+					</a>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<!-- Modal info certificate -->
+	<div class="modal fade" id="myModalCertificate" role="dialog" ng-if="type == '0'">
+		<div class="modal-dialog modal-lg">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title" style="color: black">Thông tin bằng tốt nghiệp</h4>
+				</div>
+				<div class="modal-body" style="color: black">
+					<div class="row">
+						<div class="col-sm-7">
+							<img src="{{certificate.studentImg}}" alt="" style="width: 453px;" />
+						</div>
+						<div class="col-sm-5">
+							<div class="row">
+								<table class="table table-borderless table-condensed table-hover">
+									<tr>
+										<td class="font-bold">Mã chứng chỉ</td>
+										<td>{{certificate.code}}</td>
+									</tr>
+									<tr>
+										<td class="font-bold">Tên chứng chỉ</td>
+										<td>{{certificate.title}}</td>
+									</tr>
+									<tr>
+										<td class="font-bold">Họ tên</td>
+										<td>{{certificate.studentName}}</td>
+									</tr>
+									<tr>
+										<td class="font-bold">Ngày sinh</td>
+										<td>{{certificate.dateOfBirth}}</td>
+									</tr>
+									<tr>
+										<td class="font-bold">Năm tốt nghiệp</td>
+										<td>{{certificate.yearOfGraduation}}</td>
+									</tr>
+									<tr>
+										<td class="font-bold">Xếp loại</td>
+										<td>{{certificate.degreeClassification}}</td>
+									</tr>
+									<tr>
+										<td class="font-bold">Hình thức đào tạo</td>
+										<td>{{certificate.modeOfStudy}}</td>
+									</tr>
+									<tr>
+										<td class="font-bold">Ngày phát hành</td>
+										<td>{{certificate.date}}</td>
+									</tr>
+									<tr>
+										<td class="font-bold">Người duyệt</td>
+										<td>{{certificate.author}}</td>
+									</tr>
+									<tr>
+										<td class="font-bold">Thời hạn</td>
+										<td>{{certificate.strLimit}}</td>
+									</tr>
+									<tr>
+										<td class="font-bold">Trạng thái</td>
+										<td>
+											<label for="inputFirstName" class="btn btn-success btn-xs" ng-if="certificate.status == 1">{{certificate.strStatusPublic}}</label>
+											<label for="inputFirstName" class="btn btn-danger btn-xs" ng-if="certificate.status != 1">{{certificate.strStatusPublic}}</label>
+										</td>
+									</tr>
+
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End modal info certificate -->
+
+	<!-- Modal show history edit of certificate -->
+	<div class="modal fade" id="myModalHistory" role="dialog" ng-if="type == '1'">
+		<div class="modal-dialog modal-lg">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title" style="color: black">Lịch sử cập nhật</h4>
+				</div>
+				<div class="modal-body" style="color: black">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="row">
+								<p>
+									<strong style="padding-left: 10px">Mã chứng chỉ:</strong> {{certificateCode}}</p>
+								<table class="table">
+									<thead>
+										<tr>
+											<th>Tên chứng chỉ</th>
+											<th>Họ tên</th>
+											<th>Ngày sinh</th>
+											<th>Năm tốt nghiệp</th>
+											<th>Xếp loại</th>
+											<th>Hình thức đào tạo</th>
+											<th>Ngày phát hành</th>
+											<th>Hiệu trưởng</th>
+											<th>Thời hạn</th>
+											<th>Người cập nhật</th>
+											<th>Ngày cập nhật</th>
+											<th>Trạng thái</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="item in historyList">
+											<td>{{item.title}}</td>
+											<td>{{item.studentName}}</td>
+											<td>{{item.dateOfBirth}}</td>
+											<td>{{item.yearOfGraduation}}</td>
+											<td>{{item.degreeClassification}}</td>
+											<td>{{item.modeOfStudy}}</td>
+											<td>{{item.date}}</td>
+											<td>{{item.author}}</td>
+											<td>{{item.strTxtLimit}}</td>
+											<td>{{item.updateBy.name}}</td>
+											<td>{{item.timeUpdate}}</td>
+											<td>
+												<label for="inputFirstName" class="btn btn-success btn-xs" ng-if="item.status == 1">{{item.strStatusPublic}}</label>
+												<label for="inputFirstName" class="btn btn-danger btn-xs" ng-if="item.status != 1">{{item.strStatusPublic}}</label>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End modal show history edit of certificate  -->
+
+	<!-- Modal warning -->
+	<div class="modal fade" id="myModalWarning" role="dialog">
+		<div class="modal-dialog modal-lg">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title" style="color: black">Thông báo</h4>
+				</div>
+				<div class="modal-body" style="color: black">
+					<p>{{messageWarning}}</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End modal warning -->
+
+	<script src="/js/jquery-1.11.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="/js/plugins.js"></script>
+	<script src="/js/angular.min.js"></script>
+	<script src="/js/app.js"></script>
+
+</body>
+
+</html>
