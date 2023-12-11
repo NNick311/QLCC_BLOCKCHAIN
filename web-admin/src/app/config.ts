@@ -2,8 +2,8 @@ export class Config {
     // Localhost
     // public static API_ROOT = 'http://localhost:3004';
     // Server
-  public static API_ROOT = 'http://192.168.66.131:3004';
-  public static SERVER_HOST = 'http://192.168.66.131:3004';
+  public static API_ROOT = 'http://localhost:3004';
+  public static SERVER_HOST = 'http://localhost:3004';
     public static TOKEN_KEY = 'CETIFICATIONS_WEB_ADMIN';
     public static OJBJECT_KEY = 'CETIFICATIONS_OBJECT_KEY';
     public static EVENT_CLOSE = 'close';

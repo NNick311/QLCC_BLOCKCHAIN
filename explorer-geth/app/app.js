@@ -1,5 +1,5 @@
 'use strict';
-const ETH_NODE_URL = 'http://192.168.66.131:7545'
+const ETH_NODE_URL = 'http://localhost:7545'
 
 angular.module('ethExplorer', ['ngRoute','ui.bootstrap'])
 
