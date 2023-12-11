@@ -52,10 +52,10 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id`, `name`, `email`, `code`, `date_of_birth`, `sex`, `phone`, `address`, `position`, `img`, `sign`, `password`, `status`, `dsc`, `time_create`, `time_update`) VALUES
-(1, 'Hai Nguyen Van', 'hai213k57@gmail.com', 'GV001', '1994-09-08', 0, '0967135492', 'Dong Anh-Ha Noi', 'Admin', 'http://localhost:3002/file_1538552727004_2 (1).jpg', '0x0000000000112121212121212', '1234', 0, 'Admin', 1538559351919, 1538559351919),
+(1, 'Hai Nguyen Van', 'hai@gmail.com', 'GV001', '1994-09-08', 0, '0967135492', 'HCM', 'Admin', 'http://localhost:3002/file_1538552727004_2 (1).jpg', '0x0000000000112121212121212', '1234', 0, 'Admin', 1538559351919, 1538559351919),
 (2, 'Vinh Nguyen Duc', 'vinh@gmail.com', 'vinh123', '2018-10-03', 0, '0967135492', 'Ha Noi', 'Admin', 'http://localhost:3002/file_1538552727004_2 (1).jpg', '6f7afe1c4543084bc3fc413c3c7fea5218e2374834672d20ceb1323c1124cd2bd5aff1d936440b0824c4730b8ade6d96cd1b9bb0f04e73f5b80bcee3fcb618a9', '1234', 0, 'Test', 1538552135683, 1539509452001),
 (3, 'Nguyen Mau Thoai', 'thoai@gmail.com', 'thoai123', '2018-10-03', 0, '0967135498', 'Hung Yen', 'Tearcher', 'http://localhost:3002/file_1538552727004_2 (1).jpg', '5ad82f956caeeaf515fc5b40c7a572cde55d8e10263e7565ba4d130557b18ad73661a6b89f6f898e8b17b752e7734a98a27ad578000d85af77edf738ecdcf627', '1234', 0, 'Test 12333', 1538552727049, 1538754805631),
-(6, 'Nguyen Van Anh', 'anh@gmail.com', '0010', '1994-08-10', 0, '0967344444', 'Hà Nội', 'Admin', 'http://localhost:3002/file_1539790089041_Romeo-Montague-1968-romeo-montague-1968-26656721-1152-1008.jpg', '316dabc2e771f49658178e226ba32b19d426d5b525b95d32f07c864f71c8e0aad7a903c9b65e7a7c97181a71efd8e6e25498be683a24fe75294cebef7b4c1b00', '1234', 0, 'Giảng viên mới', 1539790089098, 1539790089098);
+(6, 'Nguyen Van Anh', 'anh@gmail.com', '0010', '1994-08-10', 0, '0967344444', 'Binh Duong', 'Admin', 'http://localhost:3002/file_1539790089041_Romeo-Montague-1968-romeo-montague-1968-26656721-1152-1008.jpg', '316dabc2e771f49658178e226ba32b19d426d5b525b95d32f07c864f71c8e0aad7a903c9b65e7a7c97181a71efd8e6e25498be683a24fe75294cebef7b4c1b00', '1234', 0, 'Giảng viên mới', 1539790089098, 1539790089098);
 
 -- --------------------------------------------------------
 
@@ -77,8 +77,8 @@ CREATE TABLE `cetificate_category` (
 
 INSERT INTO `cetificate_category` (`ID`, `dsc`, `status`, `time_create`, `time_update`) VALUES
 (1, 'Bằng Tốt Nghiệp', 0, 1538586765996, 1538754262319),
-(2, 'Bằng TOEIC', 0, 1538586842700, 1538587014816),
-(3, 'Bằng Tin Học B', 0, 1538587029811, 1538587029811);
+(2, 'Bằng B1', 0, 1538586842700, 1538587014816),
+(3, 'Bằng Tin Học ', 0, 1538587029811, 1538587029811);
 
 -- --------------------------------------------------------
 
@@ -109,7 +109,7 @@ CREATE TABLE `cetificate_list` (
 --
 
 INSERT INTO `cetificate_list` (`id`, `code`, `title`, `student_id`, `year_of_graduation`, `degree_classification`, `mode_of_study`, `author`, `create_by`, `update_by`, `status`, `time_create`, `time_update`, `date`, `category_id`) VALUES
-(6, '2018240227', 'Bang ToT Nghiep', 8, 2018, 'Gioi', 'Chinh Quy', 'Le Minh Son', 1, 1, 1, 1539767804780, 1539771628859, '2018-10-18', 1);
+(6, '2018240227', 'Bang ToT Nghiep', 8, 2023, 'Gioi', 'Chinh Quy', 'Le Minh Son', 1, 1, 1, 1539767804780, 1539771628859, '2023-10-18', 1);
 
 -- --------------------------------------------------------
 
@@ -132,8 +132,8 @@ CREATE TABLE `class_room` (
 --
 
 INSERT INTO `class_room` (`id`, `code`, `dsc`, `status`, `time_create`, `time_update`, `class_room_sign`) VALUES
-(1, '001', 'TOEIC', 0, 1539684187749, 1539701706523, '2018334961'),
-(2, '002', 'CNTT 2.03', 0, 1539748052674, 1539748052674, '2018350852');
+(1, '001', 'E1 10.05/1', 0, 1539684187749, 1539701706523, '2018334961'),
+(2, '002', 'E2 03.02', 0, 1539748052674, 1539748052674, '2018350852');
 
 -- --------------------------------------------------------
 
@@ -190,8 +190,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`id`, `name`, `code`, `number_id`, `email`, `phone`, `sex`, `date_of_birth`, `address`, `time_update`, `time_create`, `create_by`, `update_by`, `status`, `img`, `student_sign`, `hash_name`, `hash_date_of_birth`) VALUES
-(7, 'Nguyen Van Hai', '001', '000121212121', 'hai213k57@gmail.com', '0967135492', 0, '2018-10-18', 'Dong Anh, Ha Noi', 1539790632646, 1539767761658, 1, 1, 0, 'http://localhost:3002/file_1539790632618_Romeo-Montague-1968-romeo-montague-1968-26656721-1152-1008.jpg', '2018412426', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'),
-(8, 'Nguyen Van B', '002', '09009009', 'vana@gmail.com', '0967135492', 0, '2018-10-18', 'Ha Noi', 1539790642654, 1539769229307, 1, 1, 0, 'http://localhost:3002/file_1539790642636_Romeo-Montague-1968-romeo-montague-1968-26656721-1152-1008.jpg', '2018210062', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855');
+(7, 'Nguyen Van Dung', '001', '000121212121', 'dung@gmail.com', '0967135492', 0, '2018-10-18', 'HCM', 1539790632646, 1539767761658, 1, 1, 0, 'http://localhost:3002/file_1539790632618_Romeo-Montague-1968-romeo-montague-1968-26656721-1152-1008.jpg', '2018412426', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'),
+(8, 'Nguyen Van Binh', '002', '09009009', 'binh@gmail.com', '0967135492', 0, '2018-10-18', 'HCM', 1539790642654, 1539769229307, 1, 1, 0, 'http://localhost:3002/file_1539790642636_Romeo-Montague-1968-romeo-montague-1968-26656721-1152-1008.jpg', '2018210062', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855');
 
 -- --------------------------------------------------------
 
