@@ -10,7 +10,7 @@ const Config = {
     DB_HOST: 'localhost',
     DB_NAME: 'cetifications',
     DB_PROTOCOL: 'mysql',
-    DB_PORT: '9907',
+    DB_PORT: '9906',
     DB_USER_NAME: 'root',
     DB_PASS_WORD: 'pwd',
 
